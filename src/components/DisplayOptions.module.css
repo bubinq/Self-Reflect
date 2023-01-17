@@ -1,0 +1,57 @@
+.options {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.btnRev {
+  width: fit-content;
+  cursor: pointer;
+  padding: 8px 6px;
+  font-size: 1em;
+  background-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  transition: all ease 0.2s;
+  border-radius: 5%;
+  color: rgb(75, 123, 255);
+  border: 2px solid rgb(75, 123, 255);
+}
+
+.btnNext {
+  cursor: pointer;
+  padding: 8px 18px;
+  font-size: 1em;
+  background-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  transition: all ease 0.2s;
+  border-radius: 5%;
+  color: rgb(75, 123, 255);
+  border: 2px solid rgb(75, 123, 255);
+}
+.review {
+  width: 85px;
+}
+
+.btnRev:hover {
+  background-color: rgb(75, 123, 255);
+  color: white;
+}
+.btnNext:hover {
+  background-color: rgb(75, 123, 255);
+  color: white;
+}
+
+.disabled {
+  cursor:not-allowed;
+  padding: 8px 18px;
+  font-size: 1em;
+  background-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  transition: all ease 0.2s;
+  border-radius: 5%;
+  color: gray(75, 123, 255);
+  border: 2px solid gray(75, 123, 255);
+}
