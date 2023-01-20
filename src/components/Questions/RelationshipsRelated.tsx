@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { UserInputContext } from "../../contexts/UserInput";
 import { Relationships } from "../../interfaces/relationship";
+import { GoingOut } from "./GoingOut";
 
 export const RelationshipsRelated = ({ quest }: { quest: Relationships }) => {
   const { inputValues, setInputValues } = useContext(UserInputContext);
@@ -21,7 +22,8 @@ export const RelationshipsRelated = ({ quest }: { quest: Relationships }) => {
   return (
     <div className="questionsWrapper">
       <h3 className="modalHeading">{quest.question}</h3>
-      <div className="range">
+      {(quest.id === 1 || quest.id === 2) ? (
+        <div className="range">
         <div className="emojis">😓</div>
         <input
           onChange={handleValueChange}
@@ -35,6 +37,10 @@ export const RelationshipsRelated = ({ quest }: { quest: Relationships }) => {
         <span>{inputValues[questVal]}</span>
         <div className="emojis">😍</div>
       </div>
+      ):
+        <GoingOut></GoingOut>
+      }
+      
     </div>
   );
 };

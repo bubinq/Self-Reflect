@@ -8,12 +8,12 @@ export const UserInputContext = createContext({
         physicalForm: "1",
         mentalForm: "1",
         financialStatus: "1",
-        hasFinancialPlan: false,
+        hasFinancialPlan: "neutral",
         financialProgress: "1",
-        mostValuedAssets: [String],
+        skillDedication: "15 minutes",
         socialLifeQuality: "1",
         socialSkills: "1",
-        goingOut: "Once a month",
+        goingOut: "every other day",
     },
     setInputValues: (input: Object | any) => { }
 });
@@ -25,12 +25,12 @@ export const UserInputProvider = ({ children }: { children: ReactElement }) => {
         physicalForm: "10",
         mentalForm: "10",
         financialStatus: "10",
-        hasFinancialPlan: false,
+        hasFinancialPlan: "neutral",
         financialProgress: "10",
-        mostValuedAssets: [],
+        skillDedication: "15 minutes",
         socialLifeQuality: "10",
         socialSkills: "10",
-        goingOut: "Once a month",
+        goingOut: "every other day",
     })
     return (
         <UserInputContext.Provider value={{ inputValues, setInputValues }}>{children}</UserInputContext.Provider>

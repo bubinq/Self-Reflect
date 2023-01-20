@@ -112,7 +112,7 @@ body {
   width: 100%;
   justify-content: space-around;
 }
-.yesNoBtn {
+.yesNoBtn, .btnTime {
   cursor: pointer;
   padding: 8px 18px;
   font-size: 1em;
@@ -123,6 +123,27 @@ body {
   border-radius: 5%;
   color: rgb(75, 123, 255);
   border: 2px solid rgb(75, 123, 255);
+}
+
+.isSelected {
+  color: rgba(35, 255, 35, 0.826);
+  border: 2px solid rgba(35, 255, 35, 0.83);
+}
+
+.btnTime {
+  display: flex;
+  align-items: center;
+  padding: 8px 1px;
+  justify-content: center;
+  font-size: 0.7em;
+  text-align: center;
+  text-transform: lowercase;
+}
+
+.dedicationWrapper {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, 5em);
 }
 
 .guides {

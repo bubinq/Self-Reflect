@@ -1,17 +1,15 @@
 import React, {
-  DetailedHTMLProps,
-  InputHTMLAttributes,
   useContext,
-  useState,
 } from "react";
 import { UserInputContext } from "../../contexts/UserInput";
 import { Wealth } from "../../interfaces/wealth";
+import { SkillDedication } from "./SkillDedication";
 
 export const WealthRelated = ({ quest }: { quest: Wealth | any }) => {
   const { inputValues, setInputValues } = useContext(UserInputContext);
-  const [ans, setAns] = useState({ isNo: false, isYes: false });
 
-  console.log(ans);
+  console.log(inputValues.hasFinancialPlan);
+  const hasFP = inputValues.hasFinancialPlan;
 
   const questVal =
     quest.id === 1
@@ -36,32 +34,31 @@ export const WealthRelated = ({ quest }: { quest: Wealth | any }) => {
 
   function handleYesOrNo(ev: React.MouseEvent<HTMLButtonElement>) {
     if (ev.currentTarget.value == "No") {
-      setAns({ isYes: false, isNo: true });
       setInputValues((oldVals: any) => ({
         ...oldVals,
-        hasFinancialPlan: false,
+        hasFinancialPlan: "negative",
       }));
     } else if (ev.currentTarget.value == "Yes") {
       setInputValues((oldVals: any) => ({
         ...oldVals,
-        hasFinancialPlan: true,
+        hasFinancialPlan: "positive",
       }));
-      setAns({ isYes: true, isNo: false });
     }
   }
 
   function goBack() {
-    setAns({ isYes: false, isNo: false });
+    setInputValues((oldVals: any) => ({
+      ...oldVals,
+      hasFinancialPlan: "neutral",
+    }));
   }
-
-  function handleMostValuedAssets(ev: React.ChangeEvent<HTMLInputElement>) {}
 
   return (
     <div className="questionsWrapper">
       <h3 className="modalHeading">
-        {ans.isYes ? quest.followUpYes : quest.question}
+        {hasFP === "positive" && quest.id === 2 ? quest.followUpYes : quest.question}
       </h3>
-      {(ans.isYes || ans.isNo) && (<button className="goBack" onClick={goBack}></button>)}
+      {((hasFP === "positive" || hasFP === "negative") && quest.id === 2) && (<button className="goBack" onClick={goBack}></button>)}
       {questVal === "financialStatus" ? (
         <div className="range">
           <div className="emojis">😓</div>
@@ -79,7 +76,7 @@ export const WealthRelated = ({ quest }: { quest: Wealth | any }) => {
         </div>
       ) : questVal === "hasFinancialPlan" ? (
         <div className="yesNo">
-          {ans.isNo && (
+          {hasFP === "negative" && (
             <>
               <span className="guides">
                 {quest.followUpNo} <br></br>
@@ -89,7 +86,7 @@ export const WealthRelated = ({ quest }: { quest: Wealth | any }) => {
               </span>
             </>
           )}
-          {ans.isYes && (
+          {hasFP === "positive" && (
             <div className="range">
               <div className="emojis">😓</div>
               <input
@@ -105,7 +102,7 @@ export const WealthRelated = ({ quest }: { quest: Wealth | any }) => {
               <div className="emojis">😍</div>
             </div>
           )}
-          {!ans.isNo && !ans.isYes && (
+          {(hasFP === "neutral") && (
             <>
               {" "}
               <input
@@ -126,9 +123,7 @@ export const WealthRelated = ({ quest }: { quest: Wealth | any }) => {
           )}
         </div>
       ) : (
-        <div className="range">
-          
-        </div>
+        <SkillDedication></SkillDedication>
       )}
     </div>
   );
