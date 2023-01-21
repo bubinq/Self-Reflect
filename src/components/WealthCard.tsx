@@ -2,9 +2,9 @@ import { DisplayOptions } from "./DisplayOptions";
 import rough from "roughjs";
 import { useEffect } from "react";
 import { WealthRelated } from "./Questions/WealthRelated";
-import { wealthConfig } from "./Questions/WealthConfig";
+import { wealthConfig } from "../configs/WealthConfig";
 
-export const WealthModal = () => {
+export const WealthCard = () => {
   useEffect(() => {
     const canvas: HTMLCanvasElement | any = document.getElementById("canvas");
     let rc = rough.canvas(canvas);
@@ -12,10 +12,10 @@ export const WealthModal = () => {
   }, []);
   return (
     <div className="contentWrapper">
-      <div className="openingWrapper">
+      <div className="wealthWrapper">
         <h3 className="modalHeading">Building our way up creating Wealth</h3>
         <canvas id="canvas" width={"500px"} height={"500px"}></canvas>
-        <DisplayOptions></DisplayOptions>
+        <DisplayOptions isOpening={false}></DisplayOptions>
       </div>
       <div className="wealthQuestionsWrapper">
         {wealthConfig.map((question) => (

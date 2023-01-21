@@ -1,10 +1,10 @@
 import { DisplayOptions } from "./DisplayOptions";
 import { useEffect } from "react";
 import { HealthRelated } from "./Questions/HealthRelated";
-import { healthConfig } from "./Questions/HealthConfig";
+import { healthConfig } from "../configs/HealthConfig";
 import rough from "roughjs";
 
-export const HealthModal = () => {
+export const HealthCard = () => {
   useEffect(() => {
     const canvas: HTMLCanvasElement | any = document.getElementById("canvas");
     let rc = rough.canvas(canvas);
@@ -13,10 +13,10 @@ export const HealthModal = () => {
 
   return (
     <div className="contentWrapper">
-      <div className="openingWrapper">
+      <div className="healthWrapper">
         <h3 className="modalHeading">Starting with the foundation Health</h3>
         <canvas id="canvas" width={"500px"} height={"500px"}></canvas>
-        <DisplayOptions></DisplayOptions>
+        <DisplayOptions isOpening={false}></DisplayOptions>
       </div>
       <div className="healthQuestionsWrapper">
         {healthConfig.map((question) => (

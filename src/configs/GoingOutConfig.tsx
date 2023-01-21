@@ -4,5 +4,5 @@ export const GoingOutConfig = [
     {id: 3, freq: "every other week"},
     {id: 4, freq: "once a month"},
     {id: 5, freq: "rarely"},
-    {id: 6, freq: "other"},
+    {id: 6, freq: "what is that?"},
 ]

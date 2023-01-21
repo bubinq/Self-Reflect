@@ -8,7 +8,6 @@ import { SkillDedication } from "./SkillDedication";
 export const WealthRelated = ({ quest }: { quest: Wealth | any }) => {
   const { inputValues, setInputValues } = useContext(UserInputContext);
 
-  console.log(inputValues.hasFinancialPlan);
   const hasFP = inputValues.hasFinancialPlan;
 
   const questVal =

@@ -2,7 +2,7 @@ import { useContext, useRef } from "react";
 import { ModalContext } from "../contexts/ModalContext";
 import styles from "./DisplayOptions.module.css";
 
-export const DisplayOptions = () => {
+export const DisplayOptions = ({isOpening}: {isOpening: boolean}) => {
   const { modalIdx, setModalIdx } = useContext(ModalContext);
 
   const btnRef = useRef<HTMLButtonElement>(null);
@@ -34,8 +34,9 @@ export const DisplayOptions = () => {
           onClick={showNextModal}
           className={!hasNext ? styles.disabled : styles.btnNext}
           disabled={!hasNext}
+          style={{ padding: isOpening? "8px 4px" : "8px 18px"}}
         >
-          Next
+          {isOpening? "Reflect" : "Next"}
         </button>
       </div>
     </div>

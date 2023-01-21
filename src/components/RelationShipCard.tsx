@@ -1,10 +1,10 @@
 import { DisplayOptions } from "./DisplayOptions";
 import { useEffect } from "react";
 import { RelationshipsRelated } from "./Questions/RelationshipsRelated";
-import { relationshipsConfig } from "./Questions/RelationshipsConfig";
+import { relationshipsConfig } from "../configs/RelationshipsConfig";
 import rough from "roughjs";
 
-export const RelationShipModal = () => {
+export const RelationShipCard = () => {
   useEffect(() => {
     const canvas: HTMLCanvasElement | any = document.getElementById("canvas");
     let rc = rough.canvas(canvas);
@@ -12,12 +12,12 @@ export const RelationShipModal = () => {
   }, []);
   return (
     <div className="contentWrapper">
-      <div className="openingWrapper">
+      <div className="relationshipWrapper">
         <h3 className="modalHeading">
           Sharing love with close ones Relationships
         </h3>
         <canvas id="canvas" width={"500px"} height={"500px"}></canvas>
-        <DisplayOptions></DisplayOptions>
+        <DisplayOptions isOpening={false}></DisplayOptions>
       </div>
       <div className="relationshipsWrapper">
         {relationshipsConfig.map((question) => (

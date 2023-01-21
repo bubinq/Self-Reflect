@@ -18,7 +18,11 @@ body {
   align-items: center;
 }
 
-.openingWrapper {
+
+.openingWrapper,
+.healthWrapper,
+.wealthWrapper,
+.relationshipWrapper {
   caret-color: transparent;
   width: 250px;
   margin-top: 2em;
@@ -28,6 +32,10 @@ body {
   transition: all 0.3s ease;
   gap: 10px;
   padding: 20px 15px;
+}
+
+.openingWrapper {
+  gap: 40px
 }
 
 .modalHeading {
@@ -112,7 +120,8 @@ body {
   width: 100%;
   justify-content: space-around;
 }
-.yesNoBtn, .btnTime {
+.yesNoBtn,
+.btnTime {
   cursor: pointer;
   padding: 8px 18px;
   font-size: 1em;
@@ -150,6 +159,43 @@ body {
   font-family: cursive;
   letter-spacing: 1.2px;
   text-align: center;
+}
+
+.welcomingPrompt {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.leftArrText {
+  position: absolute;
+  font-family: cursive;
+  font-weight: bold;
+  font-size: 1.15em;
+}
+
+path {
+  fill: transparent;
+}
+
+text {
+  fill: black;
+  font-family: cursive;
+  font-size: 1.2em;
+}
+
+.rightArrText {
+  position: absolute;
+  right: 0;
+  font-family: cursive;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.otherWrapper {
+  display: flex;
+  gap: 30px;
+  font-family: cursive;
 }
 .goBack {
   position: absolute;

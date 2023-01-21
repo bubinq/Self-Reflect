@@ -7,10 +7,9 @@ export const DisplayTime = () => {
 
     return (
         <div className={styles.displayWrapper}>
-            <span>Today is: {date}</span>
-            <br></br>
-            <span>@: {time}</span>
             <Greeting time={time}></Greeting>
+            <span className={styles.date}>{date}</span>
+            <span className={styles.time}>{time}</span>
         </div>
     );
 };

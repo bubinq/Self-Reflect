@@ -1,0 +1,10 @@
+.displayWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: cursive;
+}
+
+.date, .time {
+    font-size: 1.1em;
+}
