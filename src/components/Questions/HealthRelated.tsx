@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
-import { UserInputContext } from "../../contexts/UserInput";
+import { useSelector, useDispatch } from "react-redux";
+import { userInput } from "../../interfaces/userInput";
+import { setMentalForm, setMood, setPhysicalForm, setSleepQuality } from "../../redux/userInput";
 
 export const HealthRelated = ({
   quest,
@@ -8,22 +9,39 @@ export const HealthRelated = ({
   quest: string;
   idx: number;
 }) => {
-  const { inputValues, setInputValues } = useContext(UserInputContext);
+  const { sleepQuality, mood, physicalForm, mentalForm } = useSelector(
+    (state: userInput) => state.userInput
+  );
+  const dispatch = useDispatch();
 
   const questVal =
     idx === 1
-      ? "sleepQuality"
+      ? sleepQuality
       : idx === 2
-      ? "mood"
+      ? mood
       : idx === 3
-      ? "physicalForm"
-      : "mentalForm";
+      ? physicalForm
+      : mentalForm;
 
   function handleValueChange(ev: React.ChangeEvent<HTMLInputElement>) {
-    setInputValues((oldVals: any) => ({
-      ...oldVals,
-      [questVal]: ev.target.value,
-    }));
+    switch (idx) {
+      case 1:
+        dispatch(setSleepQuality(ev.target.value));
+        break;
+      case 2:
+        dispatch(setMood(ev.target.value));
+        break;
+      case 3:
+        dispatch(setPhysicalForm(ev.target.value));
+        break;
+      case 4:
+        dispatch(setMentalForm(ev.target.value));
+        break;
+      default:
+        dispatch(setSleepQuality(ev.target.value));
+        break;
+    }
+    
   }
   return (
     <div className="questionsWrapper">
@@ -37,9 +55,9 @@ export const HealthRelated = ({
           min="1"
           max="10"
           step="1"
-          value={inputValues[questVal]}
+          value={questVal}
         />
-        <span>{inputValues[questVal]}</span>
+        <span>{questVal}</span>
         <div className="emojis">😍</div>
       </div>
     </div>

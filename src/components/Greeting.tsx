@@ -1,4 +1,5 @@
 import styles from "./Greeting.module.css"
+import { Calendar } from "./Calendar/Calendar";
 
 export const Greeting = ({ time }: { time: String }) => {
     const greet = () => {
@@ -15,6 +16,7 @@ export const Greeting = ({ time }: { time: String }) => {
     return (
         <div className={styles.greetWrapper}>
             <h3 className={styles.text}>{text}</h3>
+            <Calendar></Calendar>
         </div>
     );
 };

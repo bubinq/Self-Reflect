@@ -1,16 +1,15 @@
-import { useContext } from "react";
-import { UserInputContext } from "../../contexts/UserInput";
+
 import { GoingOutConfig } from "../../configs/GoingOutConfig";
+import { useSelector, useDispatch } from "react-redux";
+import { userInput } from "../../interfaces/userInput";
+import { setGoingOutFreq } from "../../redux/userInput";
 
 export const GoingOut = () => {
-  const { inputValues, setInputValues } = useContext(UserInputContext);
+  const {goingOut} = useSelector((state: userInput) => state.userInput);
+  const dispatch = useDispatch();
 
   function chooseFrequency(frequency: string) {
-    setInputValues((oldInputs: any) => ({
-      ...oldInputs,
-      goingOut: frequency,
-    }));
-
+    dispatch(setGoingOutFreq(frequency))
   }
   return (
     <div className="dedicationWrapper">
@@ -20,7 +19,7 @@ export const GoingOut = () => {
             onClick={() => chooseFrequency(frequency.freq)}
             key={frequency.id}
             className={
-              inputValues.goingOut === frequency.freq
+              goingOut === frequency.freq
                 ? "btnTime isSelected"
                 : "btnTime"
             }

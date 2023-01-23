@@ -1,64 +1,51 @@
-import React, {
-  useContext,
-} from "react";
-import { UserInputContext } from "../../contexts/UserInput";
 import { Wealth } from "../../interfaces/wealth";
 import { SkillDedication } from "./SkillDedication";
+import { userInput } from "../../interfaces/userInput";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setFinancialProgress,
+  setFinancialStatus,
+  setHasFinancialPlan,
+} from "../../redux/userInput";
 
 export const WealthRelated = ({ quest }: { quest: Wealth | any }) => {
-  const { inputValues, setInputValues } = useContext(UserInputContext);
+  const { financialStatus, hasFinancialPlan, financialProgress } = useSelector(
+    (state: userInput) => state.userInput
+  );
+  const dispatch = useDispatch();
 
-  const hasFP = inputValues.hasFinancialPlan;
-
-  const questVal =
-    quest.id === 1
-      ? "financialStatus"
-      : quest.id === 2
-      ? "hasFinancialPlan"
-      : "mostValuedAssets";
+  const questVal = quest.id === 1 ? financialStatus : hasFinancialPlan;
 
   function handleValueChange(ev: React.ChangeEvent<HTMLInputElement>) {
-    setInputValues((oldVals: any) => ({
-      ...oldVals,
-      [questVal]: ev.target.value,
-    }));
+    dispatch(setFinancialStatus(ev.target.value));
   }
 
   function handleFProgress(ev: React.ChangeEvent<HTMLInputElement>) {
-    setInputValues((oldVals: any) => ({
-      ...oldVals,
-      financialProgress: ev.target.value,
-    }));
+    dispatch(setFinancialProgress(ev.target.value));
   }
 
   function handleYesOrNo(ev: React.MouseEvent<HTMLButtonElement>) {
     if (ev.currentTarget.value == "No") {
-      setInputValues((oldVals: any) => ({
-        ...oldVals,
-        hasFinancialPlan: "negative",
-      }));
+      dispatch(setHasFinancialPlan("negative"));
     } else if (ev.currentTarget.value == "Yes") {
-      setInputValues((oldVals: any) => ({
-        ...oldVals,
-        hasFinancialPlan: "positive",
-      }));
+      dispatch(setHasFinancialPlan("positive"));
     }
   }
 
   function goBack() {
-    setInputValues((oldVals: any) => ({
-      ...oldVals,
-      hasFinancialPlan: "neutral",
-    }));
+    dispatch(setHasFinancialPlan("neutral"));
   }
 
   return (
     <div className="questionsWrapper">
       <h3 className="modalHeading">
-        {hasFP === "positive" && quest.id === 2 ? quest.followUpYes : quest.question}
+        {hasFinancialPlan === "positive" && quest.id === 2
+          ? quest.followUpYes
+          : quest.question}
       </h3>
-      {((hasFP === "positive" || hasFP === "negative") && quest.id === 2) && (<button className="goBack" onClick={goBack}></button>)}
-      {questVal === "financialStatus" ? (
+      {(hasFinancialPlan === "positive" || hasFinancialPlan === "negative") &&
+        quest.id === 2 && <button className="goBack" onClick={goBack}></button>}
+      {quest.id === 1 ? (
         <div className="range">
           <div className="emojis">😓</div>
           <input
@@ -68,14 +55,14 @@ export const WealthRelated = ({ quest }: { quest: Wealth | any }) => {
             min="1"
             max="10"
             step="1"
-            value={inputValues[questVal]}
+            value={questVal}
           />
-          <span>{inputValues[questVal]}</span>
+          <span>{questVal}</span>
           <div className="emojis">😍</div>
         </div>
-      ) : questVal === "hasFinancialPlan" ? (
+      ) : quest.id === 2 ? (
         <div className="yesNo">
-          {hasFP === "negative" && (
+          {hasFinancialPlan === "negative" && (
             <>
               <span className="guides">
                 {quest.followUpNo} <br></br>
@@ -85,7 +72,7 @@ export const WealthRelated = ({ quest }: { quest: Wealth | any }) => {
               </span>
             </>
           )}
-          {hasFP === "positive" && (
+          {hasFinancialPlan === "positive" && (
             <div className="range">
               <div className="emojis">😓</div>
               <input
@@ -95,13 +82,13 @@ export const WealthRelated = ({ quest }: { quest: Wealth | any }) => {
                 min="1"
                 max="10"
                 step="1"
-                value={inputValues.financialProgress}
+                value={financialProgress}
               />
-              <span>{inputValues.financialProgress}</span>
+              <span>{financialProgress}</span>
               <div className="emojis">😍</div>
             </div>
           )}
-          {(hasFP === "neutral") && (
+          {hasFinancialPlan === "neutral" && (
             <>
               {" "}
               <input

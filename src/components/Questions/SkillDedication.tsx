@@ -1,29 +1,28 @@
-import React, { useContext, useState } from "react";
-import { UserInputContext } from "../../contexts/UserInput";
+import React, { useState } from "react";
 import { DedicationConfig } from "../../configs/DedicationConfig";
+import { useSelector, useDispatch } from "react-redux"
+import { userInput } from "../../interfaces/userInput";
+import { setSkillDedication } from "../../redux/userInput";
 
 export const SkillDedication = () => {
-  const { inputValues, setInputValues } = useContext(UserInputContext);
   const [isOther, setIsOther] = useState(false);
-  const [timeDedicated, setTimeDedicated] = useState({hours: "0", minutes: "15"});
+  const [_, setTimeDedicated] = useState({ hours: "0", minutes: "15" });
+
+  const { skillDedication } = useSelector((state: userInput) => state.userInput);
+  const dispatcher = useDispatch();
+
 
   function chooseDuration(id: number, duration: string) {
     if (id === 6) {
       setIsOther(true);
     } else {
-      setInputValues((oldInputs: any) => ({
-        ...oldInputs,
-        skillDedication: duration,
-      }));
+      dispatcher(setSkillDedication(duration))
     }
   }
 
   function goBack() {
     setIsOther(false);
-    setInputValues((oldInputs: any) => ({
-      ...oldInputs,
-      skillDedication: "15 minutes",
-    }))
+    dispatcher(setSkillDedication("15 minutes"));
   }
 
   function timeDedicatedHandler(ev: React.ChangeEvent<HTMLInputElement>) {
@@ -31,13 +30,13 @@ export const SkillDedication = () => {
       if (Number(ev.target.value) > 23) {
         return;
       } else {
-        setTimeDedicated(oldVal => ({...oldVal, hours: ev.target.value}))
+        setTimeDedicated(oldVal => ({ ...oldVal, hours: ev.target.value }))
       }
     } else if (ev.target.id === "minutes") {
       if (Number(ev.target.value) > 59) {
         return;
       } else {
-        setTimeDedicated(oldVal => ({...oldVal, minutes: ev.target.value}))
+        setTimeDedicated(oldVal => ({ ...oldVal, minutes: ev.target.value }))
       }
     }
   }
@@ -80,7 +79,7 @@ export const SkillDedication = () => {
               onClick={() => chooseDuration(dedication.id, dedication.duration)}
               key={dedication.id}
               className={
-                inputValues.skillDedication === dedication.duration
+                skillDedication === dedication.duration
                   ? "btnTime isSelected"
                   : "btnTime"
               }

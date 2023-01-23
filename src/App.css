@@ -48,11 +48,16 @@ body {
   position: absolute;
   top: 1.5em;
   display: block;
+  width: 360px;
+  height: 200px;
 }
 #openingCanvas {
   position: absolute;
   top: 1.5em;
   display: block;
+  width: 360px;
+  height: 400px;
+
 }
 
 .questionsWrapper {
@@ -214,14 +219,4 @@ text {
   background-color: #a83348;
   left: 1em;
   margin-top: 1em;
-}
-@media (max-width: 574px) {
-  #canvas {
-    width: 360px;
-    height: 200px;
-  }
-  #openingCanvas {
-    width: 360px;
-    height: 400px;
-  }
 }
