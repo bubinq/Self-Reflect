@@ -1,3 +1,4 @@
 .calendarWrapper {
     display: flex;
+    flex-direction: column;
 }

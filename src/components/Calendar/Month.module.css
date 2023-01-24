@@ -1,0 +1,11 @@
+.monthWrapper{
+    display: grid;
+    justify-content: center;
+    grid-template-rows: repeat(6, auto);
+    margin-top: 30px;
+}
+
+.weekWrapper{
+    display: grid;
+    grid-template-columns: repeat(7, 36px);
+}
