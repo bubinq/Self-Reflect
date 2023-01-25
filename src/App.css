@@ -202,6 +202,15 @@ text {
   gap: 30px;
   font-family: cursive;
 }
+
+.notCurrentMonth {
+  color: rgb(191, 191, 191);
+}
+
+a {
+  text-decoration: none;
+  color: rgb(75, 123, 255);
+}
 .goBack {
   position: absolute;
   width: 30px;

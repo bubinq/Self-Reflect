@@ -1,8 +1,9 @@
 import { useContext, useRef } from "react";
 import { ModalContext } from "../contexts/ModalContext";
+import { Link } from "react-router-dom";
 import styles from "./DisplayOptions.module.css";
 
-export const DisplayOptions = ({isOpening}: {isOpening: boolean}) => {
+export const DisplayOptions = ({ isOpening }: { isOpening: boolean }) => {
   const { modalIdx, setModalIdx } = useContext(ModalContext);
 
   const btnRef = useRef<HTMLButtonElement>(null);
@@ -26,7 +27,7 @@ export const DisplayOptions = ({isOpening}: {isOpening: boolean}) => {
           className={styles.btnRev}
           ref={btnRef}
         >
-          {modalIdx === 1 ? "Review" : "Prev"}
+          {modalIdx === 1 ? <Link to={"/review"}>Review</Link> : "Prev"}
         </button>
       </div>
       <div className={styles.review}>
@@ -34,9 +35,9 @@ export const DisplayOptions = ({isOpening}: {isOpening: boolean}) => {
           onClick={showNextModal}
           className={!hasNext ? styles.disabled : styles.btnNext}
           disabled={!hasNext}
-          style={{ padding: isOpening? "8px 4px" : "8px 18px"}}
+          style={{ padding: isOpening ? "8px 4px" : "8px 18px" }}
         >
-          {isOpening? "Reflect" : "Next"}
+          {isOpening ? "Reflect" : "Next"}
         </button>
       </div>
     </div>
