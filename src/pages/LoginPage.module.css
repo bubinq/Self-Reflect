@@ -1,0 +1,8 @@
+.loginWrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 100vh;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(115,201,252,1) 0%, rgba(130,238,255,1) 100%);
+}

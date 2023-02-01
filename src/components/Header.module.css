@@ -1,0 +1,36 @@
+.header {
+  position: fixed;
+  display: flex;
+  caret-color: transparent;
+  background-color: #fff;
+  padding: 6px 18px;
+  width: 100%;
+  box-shadow: 1px 8px 6px -5px rgba(0, 0, 0, 0.75);
+  z-index: 1;
+}
+nav {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+}
+.menuWrapper {
+  display: flex;
+  flex-direction: column;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.menuDash {
+  height: 1px;
+  width: 20px;
+  background-color: black;
+}
+
+.authWrapper {
+  display: flex;
+  justify-content: center;
+  font-family: cursive;
+  text-transform: uppercase;
+}

@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { ModalContext } from "../contexts/ModalContext";
-import { OpeningCard } from "./OpeningCard";
-import { HealthCard } from "./HealthCard";
-import { WealthCard } from "./WealthCard";
-import { RelationShipCard } from "./RelationShipCard";
+import { OpeningCard } from "../components/OpeningCard";
+import { HealthCard } from "../components/HealthCard";
+import { WealthCard } from "../components/WealthCard";
+import { RelationShipCard } from "../components/RelationShipCard";
 
-export const Modals = () => {
+export const Modal = () => {
   const { modalIdx } = useContext(ModalContext);
 
   switch (modalIdx) {
