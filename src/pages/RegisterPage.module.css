@@ -1,4 +1,4 @@
-.loginWrapper {
+.registerWrapper {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -10,7 +10,7 @@
   caret-color: transparent;
 }
 
-.loginPanel {
+.registerPanel {
   display: flex;
   flex-direction: column;
   background-color: #fff;
@@ -21,7 +21,7 @@
   margin: 4em auto;
 }
 
-.loginContent {
+.registerContent {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,7 +78,7 @@ input:focus {
   background-color: transparent;
 }
 
-.loginBtn {
+.registerBtn {
     border: none;
     margin: 20px auto;
     width: 50%;
@@ -104,4 +104,5 @@ input:focus {
     text-transform: uppercase;
     color: rgb(98, 98, 98);
     font-size: 0.8em;
+    text-align: center;
 }

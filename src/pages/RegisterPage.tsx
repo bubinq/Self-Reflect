@@ -1,12 +1,13 @@
-import styles from "./LoginPage.module.css";
+import styles from "./RegisterPage.module.css";
 import { Header } from "../components/Header";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-export const LoginPage = () => {
+export const RegisterPage = () => {
   const [focused, setFocused] = useState({
     email: false,
     pass: false,
+    repass: false,
   });
 
   function focusAndBlur(ev: React.BaseSyntheticEvent) {
@@ -22,11 +23,11 @@ export const LoginPage = () => {
   }
 
   return (
-    <div className={styles.loginWrapper}>
+    <div className={styles.registerWrapper}>
       <Header></Header>
-      <div className={styles.loginPanel}>
-        <div className={styles.loginContent}>
-          <h3 className={styles.heading}>Sign In</h3>
+      <div className={styles.registerPanel}>
+        <div className={styles.registerContent}>
+          <h3 className={styles.heading}>Sign Up</h3>
           <form>
             <div className={styles.emailWrapper}>
               <label
@@ -63,11 +64,28 @@ export const LoginPage = () => {
                 onBlur={focusAndBlur}
               ></input>
             </div>
-            <button className={styles.loginBtn} type="submit">
-              Log in
+            <div className={styles.passwordWrapper}>
+              <label
+                className={
+                  focused.repass ? styles.labelsFocused : styles.labelsIdle
+                }
+                htmlFor="repass"
+              >
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                id="repass"
+                name="repass"
+                onFocus={focusAndBlur}
+                onBlur={focusAndBlur}
+              ></input>
+            </div>
+            <button className={styles.registerBtn} type="submit">
+              Create Account
             </button>
             <div className={styles.create}>
-              <Link to={"/register"} className={styles.text}>Create Account</Link>
+              <Link to={"/login"} className={styles.text}>Have an account? <br></br>Log In</Link>
             </div>
           </form>
         </div>
