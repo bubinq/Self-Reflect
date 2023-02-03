@@ -10,6 +10,19 @@ export const RegisterPage = () => {
     repass: false,
   });
 
+  const [registerInputs, setRegisterInputs] = useState({
+    email: "",
+    pass: "",
+    repass: "",
+  });
+
+  const isDisabled = focused.email && focused.pass && focused.repass;
+
+  const hasInputs =
+    registerInputs.email !== "" &&
+    registerInputs.pass !== "" &&
+    registerInputs.repass !== "";
+
   function focusAndBlur(ev: React.BaseSyntheticEvent) {
     let input = ev.target;
     if (input.value.trim() !== "") {
@@ -19,6 +32,13 @@ export const RegisterPage = () => {
     setFocused((oldVal) => ({
       ...oldVal,
       [input.name]: !focused[input.name as keyof typeof focused],
+    }));
+  }
+
+  function handleInputs(ev: React.BaseSyntheticEvent) {
+    setRegisterInputs((input) => ({
+      ...input,
+      [ev.target.name]: ev.target.value,
     }));
   }
 
@@ -39,12 +59,14 @@ export const RegisterPage = () => {
                 Email
               </label>
               <input
+                className={styles.inputs}
                 type="email"
                 id="email"
                 name="email"
                 autoComplete="off"
                 onFocus={focusAndBlur}
                 onBlur={focusAndBlur}
+                onChange={handleInputs}
               ></input>
             </div>
             <div className={styles.passwordWrapper}>
@@ -57,11 +79,13 @@ export const RegisterPage = () => {
                 Password
               </label>
               <input
+                className={styles.inputs}
                 type="password"
                 id="pass"
                 name="pass"
                 onFocus={focusAndBlur}
                 onBlur={focusAndBlur}
+                onChange={handleInputs}
               ></input>
             </div>
             <div className={styles.passwordWrapper}>
@@ -74,18 +98,28 @@ export const RegisterPage = () => {
                 Confirm Password
               </label>
               <input
+                className={styles.inputs}
                 type="password"
                 id="repass"
                 name="repass"
                 onFocus={focusAndBlur}
                 onBlur={focusAndBlur}
+                onChange={handleInputs}
               ></input>
             </div>
-            <button className={styles.registerBtn} type="submit">
+            <button
+              className={
+                !hasInputs ? styles.registerBtn : styles.registerBtnActive
+              }
+              type="submit"
+              disabled={!isDisabled}
+            >
               Create Account
             </button>
             <div className={styles.create}>
-              <Link to={"/login"} className={styles.text}>Have an account? <br></br>Log In</Link>
+              <Link to={"/login"} className={styles.text}>
+                Have an account? <br></br>Log In
+              </Link>
             </div>
           </form>
         </div>

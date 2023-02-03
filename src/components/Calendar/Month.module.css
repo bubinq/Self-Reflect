@@ -4,8 +4,11 @@
     justify-content: center;
 
 }
-
 .weekWrapper{
     display: grid;
     grid-template-columns: repeat(7, minmax(1em, 3em));
+    border-bottom: 1px solid rgb(153, 153, 153);
+}
+.weekWrapper:last-child{
+    border-bottom: none;
 }

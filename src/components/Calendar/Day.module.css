@@ -1,16 +1,21 @@
 .dayWrapper {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgb(153, 153, 153);
-    align-items: center;
-    cursor: pointer;
-    caret-color: transparent;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(153, 153, 153);
+  cursor: pointer;
+  caret-color: transparent;
+  border-left: none;
+  border-top: none;
+  border-bottom: none;
+}
+.dayWrapper:nth-child(7) {
+  border-right: none;
 }
 
 .weekHeader {
-    margin: 0;
+  margin: 0;
 }
 
 .dayHeading {
-    margin-top: 0;
+  margin-top: 0;
 }
