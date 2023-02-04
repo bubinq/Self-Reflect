@@ -19,3 +19,20 @@
 .dayHeading {
   margin-top: 0;
 }
+
+.notMonth {
+  margin-top: 0;
+  color: rgb(170, 170, 170);
+}
+
+.isToday {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  background-color: rgb(51, 180, 255);
+  color: #fff;
+}

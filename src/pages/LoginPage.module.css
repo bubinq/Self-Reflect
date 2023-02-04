@@ -4,8 +4,8 @@
   height: 100vh;
   background: linear-gradient(
     90deg,
-    rgba(115, 201, 252, 1) 0%,
-    rgba(130, 238, 255, 1) 100%
+    rgba(236, 236, 236, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
   );
   caret-color: transparent;
 }
@@ -103,7 +103,7 @@ form {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 700;
   border-radius: 20%;
-  background-color: rgb(220,20,60);
+  background-color: rgb(220, 20, 60);
   outline: 2px solid #fff;
   color: #fff;
   cursor: pointer;
@@ -120,4 +120,39 @@ form {
   text-transform: uppercase;
   color: rgb(98, 98, 98);
   font-size: 0.8em;
+}
+
+.socialsWrapper {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.google,
+.meta,
+.github {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+}
+.google {
+  border: 1px solid rgb(220, 20, 60);
+}
+.meta {
+  border: 1px solid rgb(20, 147, 220);
+}
+.github {
+  border: 1px solid rgb(0, 0, 0);
+}
+img {
+  object-fit: cover;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
 }

@@ -1,4 +1,22 @@
 .monthHeading {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.navigation {
+    display: flex;
+    margin-top: 10px;
+}
+.arrows {
+    border: none;
+    background-color: transparent;
+    font-size: 2em;
+    color: rgb(220, 20, 60);
+}
+
+.currMonth {
+    margin: 0;
+    margin-bottom: 10px;
 }

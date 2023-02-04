@@ -2,3 +2,7 @@
     display: flex;
     flex-direction: column;
 }
+
+.calendarHeading {
+    margin-top: 2.5em;
+}

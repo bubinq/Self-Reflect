@@ -14,21 +14,26 @@ export const Heading = () => {
   const dispatch = useDispatch();
   return (
     <div className={styles.monthHeading}>
-      <button
-        onClick={() => {
-          dispatch(prevMonth());
-        }}
-      >
-        Prev
-      </button>
-      <button
-        onClick={() => {
-          dispatch(nextMonth());
-        }}
-      >
-        Next
-      </button>
-      <h4>{thisMonth}</h4>
+      <div className={styles.navigation}>
+        <button
+          className={styles.arrows}
+          onClick={() => {
+            dispatch(prevMonth());
+          }}
+        >
+          &#x2190;
+        </button>
+        <button
+          className={styles.arrows}
+          onClick={() => {
+            dispatch(nextMonth());
+          }}
+        >
+          &#x2192;
+        </button>
+      </div>
+
+      <h4 className={styles.currMonth}>{thisMonth}</h4>
     </div>
   );
 };
