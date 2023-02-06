@@ -5,8 +5,10 @@ import { MonthReducer } from "../../interfaces/monthReducer";
 
 export const Day = ({ day, rowIdx }: { day: any; rowIdx: number }) => {
   const month = useSelector((state: MonthReducer) => state.month.currMonth);
+  const year = dayjs(day).year();
+  let currMonth = dayjs(new Date(year, month, 1)).month();
   function displayClass(day: any): string | undefined {
-    if (dayjs(day).month() !== Math.abs(month % 12)) {
+    if (dayjs(day).month() !== currMonth) {
       return styles.notMonth;
     } else if (
       dayjs(day).format("DD MM YYYY") === dayjs().format("DD MM YYYY")

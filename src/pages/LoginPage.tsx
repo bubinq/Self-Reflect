@@ -31,6 +31,14 @@ export const LoginPage = () => {
     setLoginInput((input) => ({ ...input, [ev.target.name]: ev.target.value }));
   }
 
+  function openGoogleOAuth() {
+    window.open("http://localhost:8000/auth/google", "_self");
+  }
+
+  function openGithubOAuth() {
+    window.open("http://localhost:8000/auth/github", "_self");
+  }
+
   return (
     <div className={styles.loginWrapper}>
       <Header></Header>
@@ -78,14 +86,19 @@ export const LoginPage = () => {
               ></input>
             </div>
             <div className={styles.socialsWrapper}>
-              <div className={styles.google}>
-                <img alt="Google Icon" src="https://pixlok.com/wp-content/uploads/2021/04/Google-Icon-PNG-768x768.jpg"></img>
+              <div className={styles.google} onClick={openGoogleOAuth}>
+                <img
+                  className={styles.icons}
+                  alt="Google Icon"
+                  src="https://pixlok.com/wp-content/uploads/2021/04/Google-Icon-PNG-768x768.jpg"
+                ></img>
               </div>
-              <div className={styles.meta}>
-                <img alt="Meta Icon" src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/meta-icon.png"></img>
-              </div>
-              <div className={styles.github}>
-                <img alt="GitHub Icon" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"></img>
+              <div className={styles.github} onClick={openGithubOAuth}>
+                <img
+                  className={styles.icons}
+                  alt="GitHub Icon"
+                  src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                ></img>
               </div>
             </div>
             <button

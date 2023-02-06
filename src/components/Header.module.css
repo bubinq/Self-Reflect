@@ -12,6 +12,7 @@ nav {
   display: flex;
   width: 90%;
   justify-content: space-between;
+  align-items: center;
 }
 .menuWrapper {
   display: flex;
@@ -38,4 +39,17 @@ nav {
 .authWrapper > a {
   color: black;
   font-weight: 700;
+}
+
+.hasUser {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.profilePic {
+  object-fit: cover;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
 }
