@@ -2,7 +2,7 @@
   position: fixed;
   display: flex;
   caret-color: transparent;
-  background-color: transparent;
+  background-color: #fff;
   padding: 6px 18px;
   width: 100%;
   box-shadow: 1px 8px 6px -5px rgba(0, 0, 0, 0.75);
@@ -39,6 +39,7 @@ nav {
 .authWrapper > a {
   color: black;
   font-weight: 700;
+  font-size: 0.9em;
 }
 
 .hasUser {
@@ -52,4 +53,10 @@ nav {
   border-radius: 50%;
   width: 32px;
   height: 32px;
+}
+
+.logout {
+  color: black;
+  font-size: 0.9em;
+  font-weight: 700;
 }

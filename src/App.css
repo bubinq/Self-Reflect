@@ -7,6 +7,7 @@ body {
   height: 100vh;
   display: flex;
   justify-content: center;
+  
 }
 .App {
   width: 100vw;
@@ -17,7 +18,6 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
 
 .openingWrapper,
 .healthWrapper,
@@ -35,7 +35,7 @@ body {
 }
 
 .openingWrapper {
-  gap: 40px
+  gap: 40px;
 }
 
 .modalHeading {
@@ -57,7 +57,6 @@ body {
   display: block;
   width: 360px;
   height: 400px;
-
 }
 
 .questionsWrapper {
@@ -65,7 +64,6 @@ body {
   flex-direction: column;
   align-items: center;
   width: 300px;
-  gap: 5px;
 }
 
 .rangeInput {
@@ -147,7 +145,7 @@ body {
 .btnTime {
   display: flex;
   align-items: center;
-  padding: 8px 1px;
+  padding: 4px 1px;
   justify-content: center;
   font-size: 0.7em;
   text-align: center;
@@ -229,3 +227,33 @@ a {
   left: 1em;
   margin-top: 1em;
 }
+/* .submitInfo {
+  align-self: center;
+  background-color: #fff;
+  border-style: solid;
+  border-width: 2px;
+  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+  color: #41403e;
+  cursor: pointer;
+  display: inline-block;
+  font-family: cursive;
+  font-size: 1em;
+  line-height: 23px;
+  outline: none;
+  padding: .75rem;
+  text-decoration: none;
+  transition: all 235ms ease-in-out;
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+}
+
+.submitInfo:hover {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+  transform: translate3d(0, 2px, 0);
+}
+
+.submitInfo:focus {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+} */

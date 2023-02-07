@@ -1,5 +1,13 @@
+import { useContext } from "react"
+import { Outlet, Navigate } from "react-router-dom"
+import { AuthContext } from "../contexts/AuthContext"
+
 export const PrivateGuard = () => {
+    const {user} = useContext(AuthContext);
+    if (!user.email) {
+        return <Navigate to="/login"></Navigate>
+    } 
     return (
-        <div></div>
+        <Outlet></Outlet>
     )
 }

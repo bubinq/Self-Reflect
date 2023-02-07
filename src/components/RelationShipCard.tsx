@@ -2,9 +2,13 @@ import { DisplayOptions } from "./DisplayOptions";
 import { useEffect } from "react";
 import { RelationshipsRelated } from "./Questions/RelationshipsRelated";
 import { relationshipsConfig } from "../configs/RelationshipsConfig";
+import { useSelector } from "react-redux";
 import rough from "roughjs";
+import { userInput } from "../interfaces/userInput";
 
 export const RelationShipCard = () => {
+  const form = useSelector((state: userInput) => state.userInput);
+  console.log(form);
   useEffect(() => {
     const canvas: HTMLCanvasElement | any = document.getElementById("canvas");
     let rc = rough.canvas(canvas);
@@ -26,6 +30,9 @@ export const RelationShipCard = () => {
             quest={question}
           ></RelationshipsRelated>
         ))}
+        {/* <div className="submitBtnWrapper">
+          <button className="submitInfo">Submit</button>
+        </div> */}
       </div>
     </div>
   );

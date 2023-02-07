@@ -6,7 +6,7 @@ import { AuthContext } from "../contexts/AuthContext";
 
 export const HomePage = () => {
 
-  const {setUser} = useContext(AuthContext)
+  const {setUser} = useContext(AuthContext);
 
   useEffect(() => {
     const loadAuthUser = async () => {

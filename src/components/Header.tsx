@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 
 export const Header = () => {
-  const { user }: any = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   async function handleLogout(ev: React.BaseSyntheticEvent) {
     ev.stopPropagation();
@@ -31,10 +31,10 @@ export const Header = () => {
                 <img
                   alt="Profile Icon"
                   className={styles.profilePic}
-                  src={user.profilePicture}
+                  src={`${user.profilePicture}`}
                 ></img>
               </div>
-              <Link to={"/"} onClick={handleLogout}>Logout</Link>
+              <Link className={styles.logout} to={"/"} onClick={handleLogout}>Logout</Link>
             </div>
           ) : (
             <Link to={"/login"}>Log In</Link>
