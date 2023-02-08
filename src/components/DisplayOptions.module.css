@@ -4,8 +4,13 @@
   justify-content: space-between;
   z-index: 1000;
 }
-
-.btnRev {
+.nonOpeningOptions {
+  display: flex;
+  width: 360px;
+  justify-content: space-between;
+  z-index: 1000;
+}
+.openingRev {
   width: fit-content;
   cursor: pointer;
   padding: 8px 6px;
@@ -19,9 +24,37 @@
   border: 2px solid rgb(75, 123, 255);
 }
 
+.openingRefl {
+  cursor: pointer;
+  padding: 4px 4px;
+  font-size: 1em;
+  background-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  transition: all ease 0.2s;
+  border-radius: 5%;
+  color: rgb(75, 123, 255);
+  border: 2px solid rgb(75, 123, 255);
+}
+
+.btnRev {
+  width: fit-content;
+  cursor: pointer;
+  padding: 8px 6px;
+  font-size: 1em;
+  background-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  transition: all ease 0.2s;
+  border-radius: 5%;
+  color: rgb(75, 123, 255);
+  border: 2px solid rgb(75, 123, 255);
+  
+}
+
 .btnNext {
   cursor: pointer;
-  padding: 8px 18px;
+  padding: 4px 4px;
   font-size: 1em;
   background-color: transparent;
   text-transform: uppercase;
@@ -32,6 +65,8 @@
   border: 2px solid rgb(75, 123, 255);
 }
 .review {
+  display: flex;
+  justify-content: center;
   width: 85px;
 }
 
@@ -45,7 +80,7 @@
 }
 
 .disabled {
-  cursor:not-allowed;
+  cursor: not-allowed;
   padding: 8px 18px;
   font-size: 1em;
   background-color: transparent;

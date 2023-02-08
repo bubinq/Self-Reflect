@@ -20,25 +20,45 @@ export const DisplayOptions = ({ isOpening }: { isOpening: boolean }) => {
     }
   };
   return (
-    <div className={styles.options}>
+    <div className={isOpening? styles.options : styles.nonOpeningOptions}>
       <div className={styles.review}>
-        <button
-          onClick={showPrevModalOrReview}
-          className={styles.btnRev}
-          ref={btnRef}
-        >
-          {modalIdx === 1 ? <Link to={"/review"}>Review</Link> : "Prev"}
-        </button>
+        {isOpening ? (
+          <button
+            onClick={showPrevModalOrReview}
+            className={styles.openingRev}
+            ref={btnRef}
+          >
+            <Link to={"/review"}>Review</Link>
+          </button>
+        ) : (
+          <button
+            onClick={showPrevModalOrReview}
+            className={styles.btnRev}
+            ref={btnRef}
+          >
+            Prev
+          </button>
+        )}
       </div>
       <div className={styles.review}>
-        <button
-          onClick={showNextModal}
-          className={!hasNext ? styles.disabled : styles.btnNext}
-          disabled={!hasNext}
-          style={{ padding: isOpening ? "8px 4px" : "8px 18px" }}
-        >
-          {isOpening ? "Reflect" : "Next"}
-        </button>
+        {isOpening ? (
+          <button
+            onClick={showNextModal}
+            className={styles.openingRefl}
+            style={{ padding: "8px 4px" }}
+          >
+            Reflect
+          </button>
+        ) : (
+          <button
+            onClick={showNextModal}
+            className={!hasNext ? styles.disabled : styles.btnNext}
+            disabled={!hasNext}
+            style={{ padding: "8px 8px" }}
+          >
+            Next
+          </button>
+        )}
       </div>
     </div>
   );

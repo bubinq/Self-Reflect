@@ -8,13 +8,16 @@ export const HealthCard = () => {
   useEffect(() => {
     const canvas: HTMLCanvasElement | any = document.getElementById("canvas");
     let rc = rough.canvas(canvas);
-    rc.rectangle(62, 5, 380, 450, { bowing: 2.4, roughness: 1.2 });
+    rc.path("M 251 462 q -385 -598 -8 -357 M 251 462 q 386 -604 -8 -355", {
+      fill: "rgb(220,20,60)",
+      fillWeight: 0.5,
+    });
   }, []);
 
   return (
     <div className="contentWrapper">
       <div className="healthWrapper">
-        <h3 className="modalHeading">Starting with the foundation Health</h3>
+        <h3 className="modalHeading">Health</h3>
         <canvas id="canvas" width={"500px"} height={"500px"}></canvas>
         <DisplayOptions isOpening={false}></DisplayOptions>
       </div>
