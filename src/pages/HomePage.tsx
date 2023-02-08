@@ -5,18 +5,25 @@ import axios from "axios";
 import { AuthContext } from "../contexts/AuthContext";
 
 export const HomePage = () => {
-
-  const {setUser} = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     const loadAuthUser = async () => {
       const response = await axios.get(
         "http://localhost:8000/auth/login/success",
-        { withCredentials: true }
+        { withCredentials: true, signal: controller.signal }
       );
       setUser(response.data);
     };
-    loadAuthUser();
+    if (!user) {
+      loadAuthUser();
+    }
+
+    return () => {
+      controller.abort();
+    };
   }, []);
   return (
     <div>

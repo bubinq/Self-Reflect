@@ -1,0 +1,11 @@
+.errorWrapper {
+    display: flex;
+    background-color: rgb(234, 121, 143);
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 400;
+    border-radius: 5px;
+    padding: 10px;
+    width: 80%;
+}

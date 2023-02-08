@@ -1,9 +1,15 @@
 import styles from "./LoginPage.module.css";
 import { Header } from "../components/Header";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
+import { ErrorMessage } from "../components/ErrorMessage";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const LoginPage = () => {
+  const { setUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
   const [focused, setFocused] = useState({
     email: false,
     pass: false,
@@ -14,6 +20,8 @@ export const LoginPage = () => {
   });
   const hasInput = loginInput.email !== "" && loginInput.pass !== "";
   const isDisabled = focused.email && focused.pass;
+
+  const navigateTo = useNavigate();
 
   function focusAndBlur(ev: React.BaseSyntheticEvent) {
     let input = ev.target;
@@ -39,13 +47,34 @@ export const LoginPage = () => {
     window.open("http://localhost:8000/auth/github", "_self");
   }
 
+  async function loginHandler(ev: React.BaseSyntheticEvent) {
+    ev.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/auth/local/login",
+        {
+          email: loginInput.email.trim(),
+          password: loginInput.pass.trim(),
+        },
+        { withCredentials: true }
+      );
+      setUser(response.data);
+      setError("");
+      navigateTo("/", { replace: true });
+    } catch (err: any) {
+      console.log(err.response.data.message);
+      setError(err.response.data.message);
+    }
+  }
+
   return (
     <div className={styles.loginWrapper}>
       <Header></Header>
       <div className={styles.loginPanel}>
         <div className={styles.loginContent}>
           <h3 className={styles.heading}>Sign In</h3>
-          <form>
+          {error !== "" && <ErrorMessage message={error}></ErrorMessage>}
+          <form onSubmit={loginHandler}>
             <div className={styles.emailWrapper}>
               <label
                 className={

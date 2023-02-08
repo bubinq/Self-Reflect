@@ -1,9 +1,14 @@
 import styles from "./RegisterPage.module.css";
 import { Header } from "../components/Header";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { ErrorMessage } from "../components/ErrorMessage";
+import { AuthContext } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const RegisterPage = () => {
+  const { setUser } = useContext(AuthContext);
   const [focused, setFocused] = useState({
     email: false,
     pass: false,
@@ -16,6 +21,9 @@ export const RegisterPage = () => {
     repass: "",
   });
 
+  const [error, setError] = useState("");
+
+  const navigateTo = useNavigate();
   const isDisabled = focused.email && focused.pass && focused.repass;
 
   const hasInputs =
@@ -42,13 +50,35 @@ export const RegisterPage = () => {
     }));
   }
 
+  async function handleSubmit(ev: React.BaseSyntheticEvent) {
+    ev.preventDefault();
+    try {
+      const data = await axios.post(
+        "http://localhost:8000/auth/register",
+        {
+          email: registerInputs.email.trim(),
+          password: registerInputs.pass.trim(),
+          repass: registerInputs.repass.trim(),
+        },
+        { withCredentials: true }
+      );
+      setUser(data.data);
+      setError("");
+      navigateTo("/", { replace: true });
+    } catch (err: any) {
+      console.log(err.response.data.message);
+      setError(err.response.data.message);
+    }
+  }
+
   return (
     <div className={styles.registerWrapper}>
       <Header></Header>
       <div className={styles.registerPanel}>
         <div className={styles.registerContent}>
           <h3 className={styles.heading}>Sign Up</h3>
-          <form>
+          {error !== "" && <ErrorMessage message={error}></ErrorMessage>}
+          <form onSubmit={handleSubmit}>
             <div className={styles.emailWrapper}>
               <label
                 className={

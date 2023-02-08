@@ -1,4 +1,5 @@
 import { createContext, ReactElement, useState } from "react";
+import { useSessionStorage } from "../hooks/useSessionStorage";
 
 type User = {
   displayName: string | undefined;
@@ -23,12 +24,7 @@ export const AuthContext = createContext<authContext>({
 });
 
 export const UserProvider = ({ children }: { children: ReactElement }) => {
-  const [user, setUser] = useState<User>({
-    email: "",
-    username: "",
-    displayName: "",
-    profilePicture: "",
-  });
+  const [user, setUser] = useSessionStorage("user");
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       {children}
