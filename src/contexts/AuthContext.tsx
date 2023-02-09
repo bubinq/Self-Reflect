@@ -6,6 +6,7 @@ type User = {
   username: string | undefined;
   email: string;
   profilePicture: string | undefined;
+  createdAt: string | undefined;
 };
 
 type authContext = {

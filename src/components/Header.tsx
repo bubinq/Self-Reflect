@@ -1,8 +1,7 @@
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import axios from "axios";
 
 export const Header = () => {
   const { user, setUser } = useContext(AuthContext);
@@ -10,19 +9,17 @@ export const Header = () => {
     ev.stopPropagation();
     const confirm = window.confirm("Are you sure you want to log out?");
     if (confirm) {
-      setUser({displayName: "", email: "", profilePicture: "", username: ""});
+      setUser({
+        displayName: "",
+        email: "",
+        profilePicture: "",
+        username: "",
+        createdAt: "",
+      });
       sessionStorage.clear();
       window.open("http://localhost:8000/auth/logout", "_self");
     }
   }
-
-  useEffect(() => {
-    const testFunc = async() => {
-      const resposne = await axios.get("http://localhost:8000/auth/test");
-      console.log(resposne)
-    }
-    testFunc()
-  }, [])
 
   return (
     <header className={styles.header}>
