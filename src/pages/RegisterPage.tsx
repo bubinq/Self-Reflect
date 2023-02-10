@@ -54,7 +54,7 @@ export const RegisterPage = () => {
     ev.preventDefault();
     try {
       const data = await axios.post(
-        "http://localhost:8000/auth/register",
+        "http://localhost:8000/auth/register/local",
         {
           email: registerInputs.email.trim(),
           password: registerInputs.pass.trim(),

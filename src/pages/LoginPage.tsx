@@ -51,7 +51,7 @@ export const LoginPage = () => {
     ev.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8000/auth/local/login",
+        "http://localhost:8000/auth/login/local",
         {
           email: loginInput.email.trim(),
           password: loginInput.pass.trim(),

@@ -4,7 +4,7 @@ import { AuthContext } from "../contexts/AuthContext"
 
 export const PrivateGuard = () => {
     const {user} = useContext(AuthContext);
-    if (!user.createdAt) {
+    if (!user) {
         return <Navigate to="/login"></Navigate>
     } 
     return (

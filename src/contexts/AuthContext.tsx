@@ -1,5 +1,5 @@
-import { createContext, ReactElement, useState } from "react";
-import { useSessionStorage } from "../hooks/useSessionStorage";
+import { createContext, ReactElement } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 type User = {
   displayName: string | undefined;
@@ -25,7 +25,7 @@ export const AuthContext = createContext<authContext>({
 });
 
 export const UserProvider = ({ children }: { children: ReactElement }) => {
-  const [user, setUser] = useSessionStorage("user");
+  const [user, setUser] = useLocalStorage("user");
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       {children}

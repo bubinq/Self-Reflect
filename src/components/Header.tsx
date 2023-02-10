@@ -5,6 +5,7 @@ import { AuthContext } from "../contexts/AuthContext";
 
 export const Header = () => {
   const { user, setUser } = useContext(AuthContext);
+
   async function handleLogout(ev: React.BaseSyntheticEvent) {
     ev.stopPropagation();
     const confirm = window.confirm("Are you sure you want to log out?");
@@ -16,7 +17,7 @@ export const Header = () => {
         username: "",
         createdAt: "",
       });
-      sessionStorage.clear();
+      localStorage.clear();
       window.open("http://localhost:8000/auth/logout", "_self");
     }
   }
@@ -34,7 +35,7 @@ export const Header = () => {
         <div className={styles.authWrapper}>
           {user?.email || user?.username ? (
             <div className={styles.hasUser}>
-              <div>
+              <Link to={"/review"}>
                 {user.profilePicture ? (
                   <img
                     alt="Profile Icon"
@@ -44,7 +45,7 @@ export const Header = () => {
                 ) : (
                   <div className={styles.noProfilePic}></div>
                 )}
-              </div>
+              </Link>
               <Link className={styles.logout} to={"/"} onClick={handleLogout}>
                 Logout
               </Link>
