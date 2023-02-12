@@ -33,7 +33,7 @@ export const Header = () => {
           </div>
         </Link>
         <div className={styles.authWrapper}>
-          {user?.email || user?.username ? (
+          {user?.createdAt || user?.profilePicture ? (
             <div className={styles.hasUser}>
               <Link to={"/review"}>
                 {user.profilePicture ? (

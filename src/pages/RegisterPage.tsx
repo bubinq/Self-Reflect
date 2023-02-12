@@ -54,7 +54,7 @@ export const RegisterPage = () => {
     ev.preventDefault();
     try {
       const data = await axios.post(
-        "http://localhost:8000/auth/register/local",
+        "http://localhost:8000/auth/register",
         {
           email: registerInputs.email.trim(),
           password: registerInputs.pass.trim(),
@@ -66,7 +66,6 @@ export const RegisterPage = () => {
       setError("");
       navigateTo("/", { replace: true });
     } catch (err: any) {
-      console.log(err.response.data.message);
       setError(err.response.data.message);
     }
   }

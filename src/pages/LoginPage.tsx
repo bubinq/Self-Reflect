@@ -51,7 +51,7 @@ export const LoginPage = () => {
     ev.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8000/auth/login/local",
+        "http://localhost:8000/auth/login",
         {
           email: loginInput.email.trim(),
           password: loginInput.pass.trim(),
@@ -62,7 +62,6 @@ export const LoginPage = () => {
       setError("");
       navigateTo("/", { replace: true });
     } catch (err: any) {
-      console.log(err.response.data.message);
       setError(err.response.data.message);
     }
   }
